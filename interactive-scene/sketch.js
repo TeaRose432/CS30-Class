@@ -9,7 +9,6 @@ let playerX = 50;
 let playerY = 50;
 let squareX = 700;
 let squareY = 700;
-let speed = 5;
 let circleSize = 25;
 let rectX = 50;
 let rectY = 50;
@@ -45,6 +44,7 @@ function mouseWheel() {
 }
 //for wasd controls of the player
 function moveCircle() {
+  console.log(key);
   if (keyIsDown(87)) {//press w
     playerY -= playerSpeed;
   }
