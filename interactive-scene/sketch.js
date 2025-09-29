@@ -10,6 +10,7 @@ let playerY = 50;
 let squareX = 700;
 let squareY = 700;
 let circleSize = 25;
+let squareSize = 50;
 let rectX = 50;
 let rectY = 50;
 let w = 200;
@@ -66,10 +67,13 @@ function showPlayer() {
 
 function showEnemy(){
   fill("red");
-  square(squareX, squareY, 50);
+  square(squareX, squareY, squareSize);
 }
 
 function chasePlayer() {
+  if (state === "play") {
+    squareX -= enemySpeed;
+  } 
 }
 
 function showButton() {
