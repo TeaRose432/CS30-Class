@@ -4,7 +4,7 @@
 //due October 3rd 2025
 
 let playerSpeed = 4;
-let enemySpeed = 4;
+let enemySpeed = 3;
 let playerX = 50;
 let playerY = 50;
 let squareX = 700;
@@ -71,9 +71,19 @@ function showEnemy(){
 }
 
 function chasePlayer() {
-  if (state === "play") {
+  if (squareX < playerX) {
+    squareX += enemySpeed;
+  } 
+  if (squareY < playerY) {
+    squareY += enemySpeed;
+  }
+  if (squareX > playerX) {
     squareX -= enemySpeed;
   } 
+  if (squareY > playerY) {
+    squareY -= enemySpeed;
+  }
+
 }
 
 function showButton() {
