@@ -3,6 +3,8 @@
 //Calli Sperrer for compsci 30
 //due October 3rd 2025
 
+let playerHP = 100;
+let enemyHP = 100;
 let playerSpeed = 5;
 let enemySpeed = 3;
 let playerX = 50;
@@ -15,7 +17,7 @@ let rectX = 50;
 let rectY = 50;
 let w = 200;
 let h = 100;
-let state = "startScreen";
+let state = "startScreen"; // the required state variable
 
 function setup() {
   createCanvas(800, 800);
@@ -32,6 +34,11 @@ function draw() {
     showPlayer();
     chasePlayer();
     showEnemy();
+    gotHit();
+  }
+  if ( state === "gameOver") {
+    background("red");
+    showButton();
   }
 }
 //this is to change the circles size
@@ -90,10 +97,25 @@ function showButton() {
   rect(rectX, rectY, w, h);
 }
 
-function mousePressed() {
-  if (state === "startScreen") {
+function mousePressed() { // has nested loops
+  if (state === "gameOver" || state === "startScreen") {
     if (mouseX >= rectX && mouseX <= rectX + w && mouseY >= rectY && mouseY <= rectY + h) {
+      playerX = 50; //resetting the game
+      playerY = 50;
+      squareX = 700;
+      squareY = 700;
+      playerHP = 100;
+      enemyHP = 100;
       state = "play";
     } 
+  }
+}
+
+function gotHit() { // has the required nested loop
+  if (squareX === playerX || squareY === playerY) {
+    playerHP -= 20;
+    if (playerHP <= 0) {
+      state = "gameOver";
+    }
   }
 }
