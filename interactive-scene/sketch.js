@@ -3,7 +3,7 @@
 //Calli Sperrer for compsci 30
 //due October 3rd 2025
 
-let playerSpeed = 4;
+let playerSpeed = 5;
 let enemySpeed = 3;
 let playerX = 50;
 let playerY = 50;
@@ -83,7 +83,6 @@ function chasePlayer() {
   if (squareY > playerY) {
     squareY -= enemySpeed;
   }
-
 }
 
 function showButton() {
