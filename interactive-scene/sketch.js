@@ -5,6 +5,7 @@
 
 let playerHP = 100;
 let enemyHP = 100;
+let damage = 20; //this is the damage the player deals to the enemy
 let playerSpeed = 5;
 let enemySpeed = 3;
 let playerX = 50;
@@ -26,6 +27,7 @@ function setup() {
 function draw() {
   if (state === "startScreen") {
     background("gray");
+    showText();
     showButton();
   }
   if (state === "play") {
@@ -34,13 +36,23 @@ function draw() {
     showPlayer();
     chasePlayer();
     showEnemy();
-    gotHit();
+    hitEnemy();
   }
   if ( state === "gameOver") {
     background("red");
     showButton();
   }
 }
+function showText() {
+  if (state === "startScreen") {
+    textAlign(CENTER);
+    text("To begin press the button. Use WASD controls to run from the enemy square. Use the scroll wheel to change player circles size.", 400, 200);
+    textAlign(CENTER);
+    text("The smaller the player is the faster they move. The larger the player is the more damage they do. Click on enemies with your mouse to damage them", 400, 225);
+  } 
+}
+
+
 //this is to change the circles size
 function mouseWheel() {
   if (event.delta > 0) {//scroll up
@@ -111,8 +123,22 @@ function mousePressed() { // has nested loops
   }
 }
 
+
+function mouseClicked() {
+  if (state === "play") {
+    if (mouseX >= squareX && mouseX <= squareX && mouseY >= squareY && mouseY <= squareY) {
+      enemyHP -= damage;
+      if (enemyHP <= 0) {
+        state = "gameOver";
+      }
+    }
+  }
+}
+
+
+
 function gotHit() { // has the required nested loop
-  if (squareX === playerX || squareY === playerY) {
+  if (squareX >= playerX && squareX <= playerX + circleSize && squareY >= playerY && squareY <= playerY + circleSize) {
     playerHP -= 20;
     if (playerHP <= 0) {
       state = "gameOver";
