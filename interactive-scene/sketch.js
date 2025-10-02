@@ -36,11 +36,13 @@ function draw() {
     showPlayer();
     chasePlayer();
     showEnemy();
-    hitEnemy();
   }
   if ( state === "gameOver") {
     background("red");
     showButton();
+  }
+  if (state === "winScreen") {
+    background("green");
   }
 }
 function showText() {
@@ -126,10 +128,10 @@ function mousePressed() { // has nested loops
 
 function mouseClicked() {
   if (state === "play") {
-    if (mouseX >= squareX && mouseX <= squareX && mouseY >= squareY && mouseY <= squareY) {
+    if (mouseX >= squareX && mouseX <= squareX + squareSize && mouseY >= squareY && mouseY <= squareY + squareSize) {
       enemyHP -= damage;
       if (enemyHP <= 0) {
-        state = "gameOver";
+        state = "winScreen";
       }
     }
   }
