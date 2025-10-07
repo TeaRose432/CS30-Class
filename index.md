@@ -6,3 +6,4 @@
 
 ## assignments
 - [interactive scene](interactive-scene) 
+- [bad hollow knight copy](hollow-knight-copy)
