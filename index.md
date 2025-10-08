@@ -2,6 +2,7 @@
 
 ## Demos
 - [Traffic Lights](traffic-lights)
+- [bouncing balls](bouncing-balls)
 - more demos will go here
 
 ## assignments
