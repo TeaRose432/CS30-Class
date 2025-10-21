@@ -50,7 +50,7 @@ function bounceIfNeeded() {
     if (ball.y < 0 + ball.radius || ball.y > height - ball.radius) {
       ball.dy = ball.dy * -1;
       randomizeColor(ball);
-}
+    }
   }
 }
 

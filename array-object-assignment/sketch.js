@@ -1,7 +1,6 @@
 // Project Title
 // Calli Sperrer
 // due Oct 26 2025
-//https://www.bing.com/videos/riverview/relatedvideo?q=hollowknight+lilguy+in+game+animations&&view=riverview&mmscn=mtsc&mid=073BD6F402F7A237E68B073BD6F402F7A237E68B&&aps=51&FORM=VMSOVR
 // Extra for Experts:
 //
 
@@ -10,11 +9,12 @@ let lgY = 200;
 let hX = 650;
 let hY = 200;
 let state = "startScreen";
-let rectX = 50;
-let rectY = 50;
+let rectX = 350;
+let rectY = 350;
 let w = 200;
 let h = 100;
 let character;
+let enemies = ["jumper", "big guy", "charger"];
 
 let lilGuyImg = {
   damage: 10,
@@ -27,8 +27,8 @@ let hornetImg = {
 };
 
 function preload() {
-  lilGuyImg = loadImage("lil-guy.png");
-  hornetImg = loadImage("hornet.png");
+  lilGuyImg = loadImage("images-folder/lil-guy.png");
+  hornetImg = loadImage("images-folder/hornet.png");
 }
 
 function setup() {
@@ -57,7 +57,8 @@ function draw() {
 }
 
 function showButton() { 
-  fill("white");
+  stroke("black");
+  fill("gray");
   rect(rectX, rectY, w, h);
 }
 
