@@ -3,11 +3,16 @@
 // due Oct 26 2025
 // Extra for Experts:
 //
-
-let lgX = 100;
-let lgY = 200;
-let hX = 650;
-let hY = 200;
+let cords = {
+  lgX: 100,
+  lgY: 200,
+  hX: 650,
+  hY: 200
+};
+// let lgX = 100;
+// let lgY = 200;
+// let hX = 650;
+// let hY = 200;
 let state = "startScreen";
 let rectX = 350;
 let rectY = 350;
@@ -26,9 +31,14 @@ let hornetImg = {
   speed: 5,
 };
 
+let hornetWalkFrames = 4;
+let lilGuyStandFrames = 5;
+
 function preload() {
+
   lilGuyImg = loadImage("images-folder/lil-guy.png");
   hornetImg = loadImage("images-folder/hornet.png");
+  
 }
 
 function setup() {
@@ -49,6 +59,9 @@ function draw() {
   if (state === "play") {
     if (character === "lilGuy") {
       background(200);
+      showPlayer();
+      lgMove();
+
     }
     if (character === "hornet") {
       background(180);
@@ -64,8 +77,8 @@ function showButton() {
 
 function showChoices() {
   if (state === "characterChoice") {
-    image(lilGuyImg, lgX, lgY, lilGuyImg.width*0.2, lilGuyImg.height*0.2);
-    image(hornetImg, hX, hY, hornetImg.width*0.2, hornetImg.height*0.23);
+    image(lilGuyImg, cords.lgX, cords.lgY, lilGuyImg.width*0.2, lilGuyImg.height*0.2);
+    image(hornetImg, cords.hX, cords.hY, hornetImg.width*0.2, hornetImg.height*0.23);
   }
 }
 
@@ -77,13 +90,33 @@ function mousePressed() {
     }
   }
   if (state === "characterChoice") {
-    if (mouseX >= lgX && mouseX <= lgX + lilGuyImg.width*0.2 && mouseY >= lgY && mouseY <= lgY + lilGuyImg.height*0.2) {
+    if (mouseX >= cords.lgX && mouseX <= cords.lgX + lilGuyImg.width*0.2 && mouseY >= cords.lgY && mouseY <= cords.lgY + lilGuyImg.height*0.2) {
       character = "lilGuy";
       state = "play";
     }
-    if (mouseX >= hX && mouseX <= hX + hornetImg.width*0.2 && mouseY >= hY && mouseY <= hY + hornetImg.height*0.23) {
+    if (mouseX >= cords.hX && mouseX <= cords.hX + hornetImg.width*0.2 && mouseY >= cords.hY && mouseY <= cords.hY + hornetImg.height*0.23) {
       character = "hornet";
       state = "play";
     }
+  }
+}
+
+function showPlayer() {
+  
+
+}
+
+function lgMove() {
+  if (keyIsDown(87)) {//press w
+    cords.lgY -= lilGuyImg.speed;
+  }
+  if (keyIsDown(83)) {//press s
+    cords.lgY += lilGuyImg.speed;
+  }
+  if (keyIsDown(68)) {//press d
+    cords.lgX += lilGuyImg.speed;
+  }
+  if (keyIsDown(65)) {//press a
+    cords.lgX -= lilGuyImg.speed;
   }
 }
