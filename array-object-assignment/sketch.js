@@ -7,17 +7,14 @@ let cords = {
   lgX: 100,
   lgY: 200,
   hX: 650,
-  hY: 200
+  hY: 200,
+  rectX: 350,
+  rectY: 350,
+  w: 200,
+  h: 100,
 };
-// let lgX = 100;
-// let lgY = 200;
-// let hX = 650;
-// let hY = 200;
+
 let state = "startScreen";
-let rectX = 350;
-let rectY = 350;
-let w = 200;
-let h = 100;
 let character;
 let enemies = ["jumper", "big guy", "charger"];
 
@@ -31,14 +28,21 @@ let hornetImg = {
   speed: 5,
 };
 
-let hornetWalkFrames = 4;
-let lilGuyStandFrames = 5;
+let timeDelay;
+let lgStandFrame1;
+let lgStandFrame2;
+let lgStandFrame3;
+let lgStandFrame4;
+let lgStandFrame5;
 
 function preload() {
-
-  lilGuyImg = loadImage("images-folder/lil-guy.png");
+  lilGuyImg = loadImage("images-folder/lil-guy.png");//choice images
   hornetImg = loadImage("images-folder/hornet.png");
-  
+  lgStandFrame1 = loadImage("images-folder/lg-stand1.png");
+  lgStandFrame2 = loadImage("images-folder/lg-stand2.png");
+  lgStandFrame3 = loadImage("images-folder/lg-stand3.png");
+  lgStandFrame4 = loadImage("images-folder/lg-stand4.png");
+  lgStandFrame5 = loadImage("images-folder/lg-stand5.png");
 }
 
 function setup() {
@@ -72,7 +76,7 @@ function draw() {
 function showButton() { 
   stroke("black");
   fill("gray");
-  rect(rectX, rectY, w, h);
+  rect(cords.rectX, cords.rectY, cords.w, cords.h);
 }
 
 function showChoices() {
@@ -85,7 +89,7 @@ function showChoices() {
 function mousePressed() {
   console.log(mousePressed);
   if (state === "startScreen") {
-    if (mouseX >= rectX && mouseX <= rectX + w && mouseY >= rectY && mouseY <= rectY + h) {
+    if (mouseX >= cords.rectX && mouseX <= cords.rectX + cords.w && mouseY >= cords.rectY && mouseY <= cords.rectY + cords.h) {
       state = "characterChoice";
     }
   }
@@ -102,7 +106,13 @@ function mousePressed() {
 }
 
 function showPlayer() {
-  
+  while (keyIsDown !== true) {
+    image(lgStandFrame1, cords.lgX, cords.lgY, lgStandFrame1.width, lgStandFrame1.height);
+    image(lgStandFrame2, cords.lgX, cords.lgY, lgStandFrame2.width, lgStandFrame2.height);
+    image(lgStandFrame3, cords.lgX, cords.lgY, lgStandFrame3.width, lgStandFrame3.height);
+    image(lgStandFrame4, cords.lgX, cords.lgY, lgStandFrame4.width, lgStandFrame4.height);
+    image(lgStandFrame5, cords.lgX, cords.lgY, lgStandFrame5.width, lgStandFrame5.height);
+  }
 
 }
 
