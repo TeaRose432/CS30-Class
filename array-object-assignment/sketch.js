@@ -20,12 +20,12 @@ let enemies = ["jumper", "big guy", "charger"];
 let hornetImg;
 let lilGuyImg;
 
-let lg = {
+let lg = { // lil guy player, lg means lil guy
   damage: 10,
   lgSpeed: 8,
 };
 
-let hornet = {
+let ht = { //hornet player, h or ht means hornet
   damage: 7,
   hSpeed: 8,
 };
@@ -34,6 +34,8 @@ let lgStand;
 let lgStandRight;
 let lgRun;
 let lgRunRight;
+let hornetStand;
+let hornetRun;
 let direction = "right";
 
 function preload() {
@@ -43,6 +45,7 @@ function preload() {
   lgStandRight = loadImage("images-folder/ghost-standing-right.gif");
   lgRun = loadImage("images-folder/hollow-knight-walk.gif");
   lgRunRight = loadImage("images-folder/hollow-knight-walk-right.gif");
+  hornetRun = loadImage("images-folder/hornet-run.gif");
 }
 
 function setup() {
@@ -62,13 +65,13 @@ function draw() {
 
   if (state === "play") {
     if (character === "lilGuy") {
-      background(200);
-      circle(cords.lgX, cords.lgY, 25);
+      background("white");
       lgMove();
 
     }
     if (character === "hornet") {
       background(180);
+      hornetMove();
     }
   }
 }
@@ -105,22 +108,43 @@ function mousePressed() {
 }
 
 function lgMove() {
-    if (keyIsDown(68)) {//pressed d
-      cords.lgX += lg.lgSpeed;
-      image(lgRunRight, cords.lgX, cords.lgY);
-      direction = "right"
+  if (keyIsDown(68)) {//pressed d
+    cords.lgX += lg.lgSpeed;
+    image(lgRunRight, cords.lgX, cords.lgY);
+    direction = "right";
+  }
+  else if (keyIsDown(65)) {//pressed a
+    cords.lgX -= lg.lgSpeed;
+    image(lgRun, cords.lgX, cords.lgY);
+    direction = "left";
+  }
+  else {
+    if (direction === "left") {
+      image(lgStand, cords.lgX, cords.lgY);
     }
-    else if (keyIsDown(65)) {//pressed a
-      cords.lgX -= lg.lgSpeed;
-      image(lgRun, cords.lgX, cords.lgY);
-      direction = "left";
+    if (direction === "right") {
+      image(lgStandRight, cords.lgX, cords.lgY);
     }
-    else {
-      if (direction === "left") {
-        image(lgStand, cords.lgX, cords.lgY);
-      }
-      if (direction === "right") {
-        image(lgStandRight, cords.lgX, cords.lgY);
-      }
+  }
+}
+
+function hornetMove() {
+  if (keyIsDown(68)) {//pressed d
+    cords.hX += ht.hSpeed;
+    image(hornetRun, cords.hX, cords.hY);
+    direction = "right";
+  }
+  else if (keyIsDown(65)) {//pressed a
+    cords.hX -= ht.hSpeed;
+    image(hornetRun, cords.hX, cords.hY);
+    direction = "left";
+  }
+  else {
+    if (direction === "left") {
+      image(lgStand, cords.hX, cords.hY);
     }
+    if (direction === "right") {
+      image(lgStandRight, cords.hX, cords.hY);
+    }
+  }
 }
