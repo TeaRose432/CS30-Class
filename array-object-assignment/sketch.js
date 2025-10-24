@@ -17,32 +17,32 @@ let cords = {
 let state = "startScreen";
 let character;
 let enemies = ["jumper", "big guy", "charger"];
+let hornetImg;
+let lilGuyImg;
 
-let lilGuyImg = {
+let lg = {
   damage: 10,
-  speed: 3,
+  lgSpeed: 8,
 };
 
-let hornetImg = {
+let hornet = {
   damage: 7,
-  speed: 5,
+  hSpeed: 8,
 };
 
-let timeDelay;
-let lgStandFrame1;
-let lgStandFrame2;
-let lgStandFrame3;
-let lgStandFrame4;
-let lgStandFrame5;
+let lgStand;
+let lgStandRight;
+let lgRun;
+let lgRunRight;
+let direction = "right";
 
 function preload() {
   lilGuyImg = loadImage("images-folder/lil-guy.png");//choice images
   hornetImg = loadImage("images-folder/hornet.png");
-  lgStandFrame1 = loadImage("images-folder/lg-stand1.png");
-  lgStandFrame2 = loadImage("images-folder/lg-stand2.png");
-  lgStandFrame3 = loadImage("images-folder/lg-stand3.png");
-  lgStandFrame4 = loadImage("images-folder/lg-stand4.png");
-  lgStandFrame5 = loadImage("images-folder/lg-stand5.png");
+  lgStand = loadImage("images-folder/ghost-standing.gif");
+  lgStandRight = loadImage("images-folder/ghost-standing-right.gif");
+  lgRun = loadImage("images-folder/hollow-knight-walk.gif");
+  lgRunRight = loadImage("images-folder/hollow-knight-walk-right.gif");
 }
 
 function setup() {
@@ -63,7 +63,7 @@ function draw() {
   if (state === "play") {
     if (character === "lilGuy") {
       background(200);
-      showPlayer();
+      circle(cords.lgX, cords.lgY, 25);
       lgMove();
 
     }
@@ -87,7 +87,6 @@ function showChoices() {
 }
 
 function mousePressed() {
-  console.log(mousePressed);
   if (state === "startScreen") {
     if (mouseX >= cords.rectX && mouseX <= cords.rectX + cords.w && mouseY >= cords.rectY && mouseY <= cords.rectY + cords.h) {
       state = "characterChoice";
@@ -105,28 +104,23 @@ function mousePressed() {
   }
 }
 
-function showPlayer() {
-  while (keyIsDown !== true) {
-    image(lgStandFrame1, cords.lgX, cords.lgY, lgStandFrame1.width, lgStandFrame1.height);
-    image(lgStandFrame2, cords.lgX, cords.lgY, lgStandFrame2.width, lgStandFrame2.height);
-    image(lgStandFrame3, cords.lgX, cords.lgY, lgStandFrame3.width, lgStandFrame3.height);
-    image(lgStandFrame4, cords.lgX, cords.lgY, lgStandFrame4.width, lgStandFrame4.height);
-    image(lgStandFrame5, cords.lgX, cords.lgY, lgStandFrame5.width, lgStandFrame5.height);
-  }
-
-}
-
 function lgMove() {
-  if (keyIsDown(87)) {//press w
-    cords.lgY -= lilGuyImg.speed;
-  }
-  if (keyIsDown(83)) {//press s
-    cords.lgY += lilGuyImg.speed;
-  }
-  if (keyIsDown(68)) {//press d
-    cords.lgX += lilGuyImg.speed;
-  }
-  if (keyIsDown(65)) {//press a
-    cords.lgX -= lilGuyImg.speed;
-  }
+    if (keyIsDown(68)) {//pressed d
+      cords.lgX += lg.lgSpeed;
+      image(lgRunRight, cords.lgX, cords.lgY);
+      direction = "right"
+    }
+    else if (keyIsDown(65)) {//pressed a
+      cords.lgX -= lg.lgSpeed;
+      image(lgRun, cords.lgX, cords.lgY);
+      direction = "left";
+    }
+    else {
+      if (direction === "left") {
+        image(lgStand, cords.lgX, cords.lgY);
+      }
+      if (direction === "right") {
+        image(lgStandRight, cords.lgX, cords.lgY);
+      }
+    }
 }
