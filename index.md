@@ -4,6 +4,7 @@
 - [Traffic Lights](traffic-lights)
 - [bouncing balls](bouncing-balls)
 - [generative art](generative-art)
+- [grid demo](grid)
 - more demos will go here
 
 ## assignments
