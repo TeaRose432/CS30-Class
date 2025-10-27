@@ -141,8 +141,8 @@ function mousePressed() {
 
 function showGround() {//draws the ground characters and enemies stand on
   fill("gray");
-  noStroke()
-  rect(0, 800, 900, 100)
+  noStroke();
+  rect(0, 800, 900, 100);
 }
 
 function showEnemy() { //draws and controls the movement for enemies
