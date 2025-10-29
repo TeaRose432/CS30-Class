@@ -5,6 +5,7 @@
 - [bouncing balls](bouncing-balls)
 - [generative art](generative-art)
 - [grid demo](grid)
+- [game of life](game-of-life)
 - more demos will go here
 
 ## assignments
