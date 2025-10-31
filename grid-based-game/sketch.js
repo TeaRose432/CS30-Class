@@ -19,6 +19,8 @@ let cords = {
   h: 100,
 };
 
+let theBackgrounds = [];
+
 let state = "startScreen";
 let character;
 let enemies = ["jumper", "big guy", "charger"];
@@ -71,10 +73,14 @@ function preload() {//loading images and animations
   enemyBGRight = loadImage("images-folder/big-guy-walk-right.gif");
   enemyJRight = loadImage("images-folder/jumper-walk-right.gif");
   enemyCRight = loadImage("images-folder/charger-walk-right.gif");
+  blueRoom = loadImage("images-folder/blue-room.jpg");
+  webRoom = loadImage("images-folder/web-room.jpg");
+  tramRoom = loadImage("images-folder/tram-room.png");
 }
 
 function setup() {
   createCanvas(900, 900);
+  theBackgrounds = webRoom, BlueRoom, TramRoom;
 }
 
 function draw() {
@@ -100,6 +106,13 @@ function draw() {
       showEnemy();
       hornetMove();
     }
+  }
+}
+
+
+function backgroundChange() {
+  if (state === "play") {
+    image(blueRoom, windowWidth, windowHeight);
   }
 }
 
