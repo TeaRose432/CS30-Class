@@ -6,6 +6,7 @@
 - [generative art](generative-art)
 - [grid demo](grid)
 - [game of life](game-of-life)
+- [grid character](grid-character)
 
 
 ## assignments
