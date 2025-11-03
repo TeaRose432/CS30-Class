@@ -56,6 +56,11 @@ let hornetRun;
 let hornetRunRight;
 let direction = "right";//is used to know which way character should face when movement stops
 
+function setup() {
+  createCanvas(900, 900);
+  theBackgrounds = [webRoom, blueRoom, tramRoom];
+}
+
 function preload() {//loading images and animations
   lilGuyImg = loadImage("images-folder/lil-guy.png");
   hornetImg = loadImage("images-folder/hornet.png");
@@ -78,10 +83,7 @@ function preload() {//loading images and animations
   tramRoom = loadImage("images-folder/tram-room.png");
 }
 
-function setup() {
-  createCanvas(900, 900);
-  theBackgrounds = webRoom, BlueRoom, TramRoom;
-}
+
 
 function draw() {
   if (state === "startScreen") {
@@ -94,15 +96,16 @@ function draw() {
   }
   if (state === "play") {
     if (character === "lilGuy") {
-      background("white");
-      showGround();
+      //background("white");
+      backgroundChange();
+      //showGround();
       showEnemy();
       lgMove();
 
     }
     if (character === "hornet") {
       background("white");
-      showGround();
+      //showGround();
       showEnemy();
       hornetMove();
     }
@@ -112,7 +115,7 @@ function draw() {
 
 function backgroundChange() {
   if (state === "play") {
-    image(blueRoom, windowWidth, windowHeight);
+    image(blueRoom, 0, 0);
   }
 }
 
@@ -152,11 +155,11 @@ function mousePressed() {
   }
 }
 
-function showGround() {//draws the ground characters and enemies stand on
-  fill("gray");
-  noStroke();
-  rect(0, 800, 900, 100);
-}
+// function showGround() {//draws the ground characters and enemies stand on
+//   fill("gray");
+//   noStroke();
+//   rect(0, 800, 900, 100);
+// }
 
 function showEnemy() { //draws and controls the movement for enemies
   if (cords.enemyX <= 5) {
