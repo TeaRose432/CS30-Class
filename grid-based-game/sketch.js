@@ -58,7 +58,9 @@ let direction = "right";//is used to know which way character should face when m
 
 function setup() {
   createCanvas(900, 900);
-  theBackgrounds = [webRoom, blueRoom, tramRoom];
+  //indentation is to make it easier to tell what is apart of the 2D array
+  theBackgrounds = [webRoom, blueRoom, tramRoom,
+                    statueRoom, ];
 }
 
 function preload() {//loading images and animations
@@ -81,6 +83,7 @@ function preload() {//loading images and animations
   blueRoom = loadImage("images-folder/blue-room.jpg");
   webRoom = loadImage("images-folder/web-room.jpg");
   tramRoom = loadImage("images-folder/tram-room.png");
+  statueRoom = loadImage("images-folder/statue-room.png");
 }
 
 
@@ -114,8 +117,23 @@ function draw() {
 
 
 function backgroundChange() {
-  if (state === "play") {
+  //this changes thebackground cordinates
+  if (theBackgrounds[0][1]) {
+    if (cords.lgX <= 0) {
+      theBackgrounds[0][0];
+    }
+  }
+
+  //depending on the cords of thebackgrounds it will show different rooms
+  //blueroom is the starting room
+  if (theBackgrounds[0][1]) {
     image(blueRoom, 0, 0);
+  }
+  if (theBackgrounds[0][0]) {
+    background(webRoom, 0, 0);
+  }
+  if (theBackgrounds[0][2]) {
+    background(tramRoom, 0, 0);
   }
 }
 
