@@ -1,8 +1,13 @@
-// Project Title
+// Grid based assignment
 // Calli Sperrer
-// due Oct 26 2025
+// due Nov 12 2025
 // Extra for Experts:
-//I made use of gifs instead of images. 
+//
+
+const CELL_SIZE = 50;
+let craftingGrid;
+let cols = 3;
+let rows = 3;
 
 let cords = {
   lgX: 100,
@@ -20,7 +25,6 @@ let cords = {
 };
 
 let theBackgrounds = [];
-
 let state = "startScreen";
 let character;
 let enemies = ["jumper", "big guy", "charger"];
@@ -35,6 +39,8 @@ let enemyBGRight;
 let opponent;
 let hornetImg;
 let lilGuyImg;
+let hasOre = true;
+let hasStick = true;
 
 let lg = { // lil guy player, lg means lil guy
   damage: 10,
@@ -58,9 +64,7 @@ let direction = "right";//is used to know which way character should face when m
 
 function setup() {
   createCanvas(900, 900);
-  //indentation is to make it easier to tell what is apart of the 2D array
-  theBackgrounds = [webRoom, blueRoom, tramRoom,
-                    statueRoom, ];
+  theBackgrounds = [webRoom, blueRoom, tramRoom, statueRoom];
 }
 
 function preload() {//loading images and animations
@@ -86,8 +90,6 @@ function preload() {//loading images and animations
   statueRoom = loadImage("images-folder/statue-room.png");
 }
 
-
-
 function draw() {
   if (state === "startScreen") {
     background(220);
@@ -99,40 +101,34 @@ function draw() {
   }
   if (state === "play") {
     if (character === "lilGuy") {
-      //background("white");
       backgroundChange();
-      //showGround();
+      //displayCraftingGrid();
       showEnemy();
       lgMove();
 
     }
     if (character === "hornet") {
       background("white");
-      //showGround();
       showEnemy();
       hornetMove();
     }
   }
 }
 
-
 function backgroundChange() {
-  //this changes thebackground cordinates
-  if (theBackgrounds[0][1]) {
+  //changes and displays the background
+  if (theBackgrounds[0]) {
+    image(blueRoom, 0, 0);
     if (cords.lgX <= 0) {
-      theBackgrounds[0][0];
+      theBackgrounds[1];
     }
   }
 
-  //depending on the cords of thebackgrounds it will show different rooms
-  //blueroom is the starting room
-  if (theBackgrounds[0][1]) {
-    image(blueRoom, 0, 0);
-  }
-  if (theBackgrounds[0][0]) {
+  if (theBackgrounds[1]) {
     background(webRoom, 0, 0);
   }
-  if (theBackgrounds[0][2]) {
+
+  if (theBackgrounds[2]) {
     background(tramRoom, 0, 0);
   }
 }
@@ -149,6 +145,21 @@ function Choices() {//lets player decide which character to play
     image(hornetImg, cords.hX, cords.hY, hornetImg.width*0.2, hornetImg.height*0.23);
   }
   opponent = random(enemies);//choosing a random enemy that will appear
+}
+
+function keyPressed() {
+  if (key === "c") {
+    displayCraftingGrid();
+  }
+}
+
+function displayCraftingGrid() {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      fill("white");
+      square(x * CELL_SIZE, y * CELL_SIZE , CELL_SIZE);
+    }
+  }
 }
 
 function mousePressed() {
@@ -172,12 +183,6 @@ function mousePressed() {
     }
   }
 }
-
-// function showGround() {//draws the ground characters and enemies stand on
-//   fill("gray");
-//   noStroke();
-//   rect(0, 800, 900, 100);
-// }
 
 function showEnemy() { //draws and controls the movement for enemies
   if (cords.enemyX <= 5) {
