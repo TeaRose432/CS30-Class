@@ -77,6 +77,7 @@ function draw() {
   fillGrid();
   craftingRecipes();
   displayCreation();
+  displayInstructions();
 }
 
 function displayGrid() {
@@ -221,4 +222,12 @@ function displayCreation() {
   if (itemMade === "diamond shovel") {
     image(diamondShovelImg, 50, 545,  diamondShovelImg.width*0.4, diamondShovelImg.height*0.4);
   }
+}
+
+function displayInstructions() {
+  // textSize(14);
+  fill("white");
+  text("try to make different diamond items in the grid! press the space bar to submit your guess.", 580, 500);
+  text("here is a hint! stick(s) are always in the middle column, and never in the top row!", 600, 515);
+  text("also, dont let the diamonds and sticks touch! thats not how you craft!", 630, 530);
 }

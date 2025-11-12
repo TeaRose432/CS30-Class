@@ -7,7 +7,6 @@
 - [grid demo](grid)
 - [game of life](game-of-life)
 - [grid character](grid-character)
-- [OOP demo](oop-demo)
 
 
 ## assignments
