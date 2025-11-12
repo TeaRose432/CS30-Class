@@ -17,7 +17,7 @@ let diamondImg2;
 let diamondImg3;
 let diamondPicImg;
 let diamondAxeImg;
-let diamondSwordImg
+let diamondSwordImg;
 let diamondShovelImg;
 let diamondHoeImg;
 let itemMade;
@@ -39,7 +39,7 @@ let cords = {
 
 let circleD = 150;
 let circleX = 100;
-let circleY = 600
+let circleY = 600;
 //diamond and stick positions for the grid
 let sX1;
 let sX2;
