@@ -81,6 +81,7 @@ function draw() {
 }
 
 function displayGrid() {
+  //this function draws the grid
   for (let y = 0; y < GRID_DIMENSIONS; y++) {
     for (let x = 0; x < GRID_DIMENSIONS; x++) {
       square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
@@ -148,7 +149,7 @@ function mouseDragged() {
 }
 
 function keyPressed() {
-  //this puts the items position inside the actual grid
+  //this puts the items position inside the actual grid for recipe reading
   if (key === " ") {
     if (sY1 < 3 && sX1 < 3) {
       craftingGrid[sY1][sX1] = 1;
@@ -200,6 +201,7 @@ function craftingRecipes() {
   else if (craftingGrid[0][0] === 2 && craftingGrid[0][1] === 2 && craftingGrid[1][1] === 1 && craftingGrid[2][1] === 1) {
     itemMade = "diamond hoe";
   }
+  //diamond shovel
   else if (craftingGrid[0][1] === 2 && craftingGrid[1][1] === 1 && craftingGrid[2][1] === 1) {
     itemMade = "diamond shovel";
   }
@@ -225,7 +227,6 @@ function displayCreation() {
 }
 
 function displayInstructions() {
-  // textSize(14);
   fill("white");
   text("try to make different diamond items in the grid! press the space bar to submit your guess.", 580, 500);
   text("here is a hint! stick(s) are always in the middle column, and never in the top row!", 600, 515);
