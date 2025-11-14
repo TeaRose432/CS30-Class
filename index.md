@@ -7,7 +7,8 @@
 - [grid demo](grid)
 - [game of life](game-of-life)
 - [grid character](grid-character)
--[walker oop demo](walker-oop-demo)
+- [walker oop demo](walker-oop-demo)
+- [fireworks oop demo](fireworks-oop-demo)
 
 
 ## assignments
