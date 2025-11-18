@@ -9,7 +9,7 @@
 - [grid character](grid-character)
 - [walker oop demo](walker-oop-demo)
 - [fireworks oop demo](fireworks-oop-demo)
-
+- [nodes OOP](nodes-oop)
 
 ## assignments
 - [interactive scene](interactive-scene) 
