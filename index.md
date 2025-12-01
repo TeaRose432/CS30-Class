@@ -15,4 +15,4 @@
 - [interactive scene](interactive-scene) 
 - [array and object assignment](array-object-assignment)
 - [bad hollow knight copy](hollow-knight-copy)
-- [grid based game](grid-based-game)
+- [grid based game](grid-based-game-)
