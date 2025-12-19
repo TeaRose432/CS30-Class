@@ -10,6 +10,7 @@
 - [walker oop demo](walker-oop-demo)
 - [fireworks oop demo](fireworks-oop-demo)
 - [nodes OOP](nodes-oop)
+- [triangle](recursion-triangle)
 
 ## assignments
 - [interactive scene](interactive-scene) 
